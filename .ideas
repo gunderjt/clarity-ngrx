@@ -1,0 +1,13 @@
+Login
+	"remember me" not working
+Dropdown
+	aside starts open.  Start it closed.
+Slug mixin
+	Options being passed in are not working...when middlename is not present
+	Slug not handling apostrophy correctly:
+		"firstName": "Jarrell",
+    	"middleName": "Lauretta",
+	    "lastName": "O'Connell",
+    	"slug": "jarrell-lauretta-o'connell",  #incorrect
+Loopback Search:
+	

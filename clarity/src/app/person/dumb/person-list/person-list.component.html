@@ -1,0 +1,14 @@
+<clr-datagrid>
+	<clr-dg-column>User ID</clr-dg-column>
+	<clr-dg-column>Name</clr-dg-column>
+	<clr-dg-column>Main Email</clr-dg-column>
+	<clr-dg-row *ngFor="let person of people"
+		(click)="selectPerson.emit(person)"
+	>
+		<clr-dg-cell>{{person.id}}</clr-dg-cell>
+		<clr-dg-cell>{{person.firstName}} {{person.middleName}} {{person.lastName}}</clr-dg-cell>
+		<clr-dg-cell>{{person.emails}}</clr-dg-cell>
+	</clr-dg-row>
+
+	<clr-dg-footer>{{people.length}} people</clr-dg-footer>
+</clr-datagrid>

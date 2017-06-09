@@ -1,0 +1,69 @@
+{
+  "name": "Person",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {},
+    "Slugify": {"fields":["firstName", "middleName", "lastName"], "slug_field": "slug"}
+  },
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "middleName": {
+      "type": "string",
+      "required": false
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "suffixName": {
+      "type": "string",
+      "required": false
+    },
+    "active": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "index": {"unique": true}
+    }
+  },
+  "validations": [],
+  "relations": {
+    "affiliations": {
+      "type": "hasOne",
+      "model": "Affiliation",
+      "foreignKey": ""
+    },
+    "phoneNumbers": {
+      "type": "hasMany",
+      "model": "PhoneNumber",
+      "foreignKey": ""
+    },
+    "emails": {
+      "type": "hasMany",
+      "model": "EmailAddress",
+      "foreignKey": ""
+    },
+    "pages": {
+      "type": "hasMany",
+      "model": "Page",
+      "foreignKey": "",
+      "through": "PageAuthors"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

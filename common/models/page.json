@@ -1,0 +1,34 @@
+{
+  "name": "Page",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "public": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "publishDate": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "authors": {
+      "type": "hasMany",
+      "model": "Person",
+      "foreignKey": "",
+      "through": "PageAuthors"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
