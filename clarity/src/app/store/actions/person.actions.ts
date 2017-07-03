@@ -1,7 +1,11 @@
 import { Action } from '@ngrx/store';
-import { Person } from "../../shared/sdk/models";
+import { Person, LoopBackFilter } from "../../shared/sdk/models";
 
 export class PersonActions {
+	static GET_PEOPLE_COUNT = '[person] GET_PEOPLE_COUNT';
+	static GET_PEOPLE_COUNT_SUCCESS = '[person] GET_PEOPLE_COUNT_SUCCESS';
+	static GET_PEOPLE_COUNT_FAILURE = '[person] GET_PEOPLE_COUNT_FAILURE';
+
 	static GET_ALL_PEOPLES = '[person] GET_ALL_PEOPLES';
 	static GET_ALL_PEOPLES_SUCCESS = '[person] GET_ALL_PEOPLES_SUCCESS';
 	static GET_ALL_PEOPLES_FAILED = '[person] GET_ALL_PEOPLES_FAILED';
@@ -23,10 +27,13 @@ export class PersonActions {
 	static REMOVE_PERSON_FAILED = "[person] REMOVE_PERSON_FAILED";
 
 
-	getAllPeople():  Action {
-		return { type: PersonActions.GET_ALL_PEOPLES };
+	getAllPeople(filter?: LoopBackFilter): Action {
+		return { 
+			type: PersonActions.GET_ALL_PEOPLES,
+			payload: filter
+		};
 	}
-	getAllPeoplesSuccess(people: any): Action {
+	getAllPeoplesSuccess(people: Person[]): Action {
 		return {
 			type: PersonActions.GET_ALL_PEOPLES_SUCCESS,
 			payload: people
@@ -38,13 +45,13 @@ export class PersonActions {
 			payload: err,
 		}
 	}
-	getPerson(id: number): Action {
+	getPerson(id: string): Action {
 		return {
 			type: PersonActions.GET_PERSON,
 			payload: id,
 		}
 	}
-	getPersonSuccess(person: any): Action {
+	getPersonSuccess(person: Person): Action {
 		return {
 			type: PersonActions.GET_PERSON_SUCCESS,
 			payload: person
@@ -56,13 +63,13 @@ export class PersonActions {
 			payload: err
 		}
 	}
-	createPerson(person: any): Action {
+	createPerson(person: Person): Action {
 		return {
 			type: PersonActions.CREATE_PERSON,
 			payload: person
 		}
 	}
-	createPersonSuccess(person: any): Action {
+	createPersonSuccess(person: Person): Action {
 		return {
 			type: PersonActions.CREATE_PERSON_SUCCESS,
 			payload: person
@@ -74,13 +81,13 @@ export class PersonActions {
 			payload: err
 		}
 	}
-	updatePerson(id: number, person: any): Action {
+	updatePerson(id: string, person: Person): Action {
 		return {
 			type: PersonActions.UPDATE_PERSON,
 			payload: {'id': id, "person": person}
 		}
 	}
-	updatePersonSuccess(person: any): Action {
+	updatePersonSuccess(person: Person): Action {
 		return {
 			type: PersonActions.UPDATE_PERSON_SUCCESS,
 			payload: person
@@ -92,16 +99,16 @@ export class PersonActions {
 			payload: err
 		}
 	}
-	removePerson(id: number): Action {
+	removePerson(id: string): Action {
 		return {
 			type: PersonActions.REMOVE_PERSON,
 			payload: id
 		}
 	}
-	removePersonSuccess(id: number): Action {
+	removePersonSuccess(person: Person): Action {
 		return {
 			type: PersonActions.REMOVE_PERSON_SUCCESS,
-			payload: id
+			payload: person
 		}
 	}
 	removePersonFailed(err: any): Action {

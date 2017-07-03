@@ -1,60 +1,63 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Person } from "../../shared/sdk/models";
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
+import { Person, EmailAddress } from "../../shared/sdk/models";
 import { PersonActions } from '../../store/actions/person.actions';
-import { PersonEditComponent } from '../dumb/person-edit/person-edit.component';
 import { getSelectedPerson } from '../../store/selectors/person.selectors';
 import { AppState } from '../../store/store.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PersonStoreService } from '../../store/services/person-store.service';
 
 @Component({
 	selector: 'app-person',
 	template: `
-		<person-detail 
-			[person]="person$ | async"
-			(goEdit)="openEdit()"
-		></person-detail>
-		<person-edit
-			[person]="person$ | async"
-			(save)=savePerson($event)
-		></person-edit>
+		<div class="row">
+			<div class="col-xs">
+				<person-detail 
+					[person]="person$ | async"
+					(edit)="openEdit($event)"
+					(back)="goBack()"
+					(delete)="removePerson($event)"
+				>
+				</person-detail>
+			</div>
+		</div>
 	`,
 })
 export class PersonComponent implements OnInit, OnDestroy {
-	private sub: any;
+	private ngUnsubscribe: Subject<void> = new Subject<void>();
 	person$: Observable<Person>;
-	@ViewChild(PersonEditComponent) personedit: PersonEditComponent
 
 	constructor(
-		private store: Store<AppState>,
+		private personStore: PersonStoreService,
 		private route: ActivatedRoute,
-		private actions: PersonActions,
+		private router: Router,
 	) { 
 	 }
 
 	ngOnInit() {
-		this.sub = this.route.params.subscribe(params => {
-      const _id = +params['id'];
-      this.store.dispatch(this.actions.getPerson(_id));
-      this.person$ = this.store.select(getSelectedPerson);
-    });
+		this.person$ = this.personStore.person$;
 	}
 
-	savePerson(person) {
-		//this.store.dispatch(this.actions.savePerson)
-	}
 
 	removePerson(person) {
-
+		this.personStore.removePerson(person as Person);
 	}
 
-	openEdit() {
-		this.personedit.openModel();
+	openEdit(person) {
+		this.router.navigate([{outlets: {modal: ['people', person.id, 'edit']}}]);
+		//this.router.navigate(['/people', person.id, 'edit']);
 	}
 
-  ngOnDestroy() {
-  	this.sub.unsubscribe()
-  }
+	goBack() {
+		this.router.navigate(['/people']);
+	}
+
+	ngOnDestroy() {
+		this.ngUnsubscribe.next();
+		this.ngUnsubscribe.complete();
+	}
 
 }

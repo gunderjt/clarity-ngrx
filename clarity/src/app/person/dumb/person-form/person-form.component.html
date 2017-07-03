@@ -1,0 +1,51 @@
+<form [formGroup]="personForm" novalidate>
+	<section class="form-block">
+		<label>Person Info</label>
+		<div class="form-group row">
+			<div class="col-md">
+				<label>Name</label>
+			</div>
+			<div class="col-md-4">
+				<label
+					class="tooltip tooltip-validation tooltip-sm form-control"
+					aria-haspopup="true"
+					role="tooltip"
+					[class.invalid]="personForm.get('firstName').invalid
+							&& (personForm.get('firstName').dirty || personForm.get('firstName').touched)">
+					<input 
+						class="form-control"
+						type="text"
+						placeholder="First Name" 
+						formControlName="firstName">
+					<span class="tooltip-content">
+						First Name is required.
+					</span>
+				</label>
+			</div>
+			<div class="col-md-3">
+				<input
+						class="form-control"
+						type="text"
+						placeholder="Middle Name (optional)" 
+						formControlName="middleName">
+			</div>
+			<div class="col-md-4">
+				<label
+					aria-haspopup="true"
+					role="tooltip"
+					class="tooltip tooltip-validation tooltip-sm form-control"
+					[class.invalid]="personForm.get('lastName').invalid
+							&& (personForm.get('lastName').dirty || personForm.get('lastName').touched)">
+					<input
+						class="form-control"
+						type="text"
+						placeholder="Last Name" 
+						formControlName="lastName">
+					<span class="tooltip-content">
+						Last Name is required.
+					</span>
+				</label>
+			</div>
+		</div>
+	</section>
+</form>

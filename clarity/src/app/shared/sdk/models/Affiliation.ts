@@ -7,16 +7,16 @@ declare var Object: any;
 export interface AffiliationInterface {
   "label": string;
   "approved": boolean;
-  "id"?: number;
-  "personId"?: number;
+  "id"?: any;
+  "personId"?: any;
   people?: Person[];
 }
 
 export class Affiliation implements AffiliationInterface {
   "label": string;
   "approved": boolean;
-  "id": number;
-  "personId": number;
+  "id": any;
+  "personId": any;
   people: Person[];
   constructor(data?: AffiliationInterface) {
     Object.assign(this, data);
@@ -60,11 +60,11 @@ export class Affiliation implements AffiliationInterface {
         },
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
         "personId": {
           name: 'personId',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {

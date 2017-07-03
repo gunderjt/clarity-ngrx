@@ -1,4 +1,3 @@
-<ng2-toasty [position]="'top-center'"></ng2-toasty>
 <clr-main-container>
   <clr-header>
     <div class="branding">
@@ -21,16 +20,18 @@
         <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active">About</a>
+        <a class="nav-link" href="#" [routerLink]="[{ outlets: {primary: ['home'], modal: ['about'] } }]" routerLinkActive="active">About</a>
       </li>
     </ul>
   </nav>
   <div class="content-container">
     <div class="content-area">
+      <ng2-toasty [position]="'top-center'"></ng2-toasty>
       <router-outlet></router-outlet>
     </div>
     <div class="sidenav">
       <sidemenu></sidemenu>
     </div>
   </div>
+  <router-outlet name="modal"></router-outlet>
 </clr-main-container>

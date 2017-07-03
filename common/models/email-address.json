@@ -1,6 +1,6 @@
 {
   "name": "EmailAddress",
-  "plural": "y",
+  "plural": "EmailAddresses",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -18,6 +18,16 @@
     },
     "workshop": {
       "type": "boolean"
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "default": "main"
+    },
+    "type": {
+      "type": "string",
+      "required": "true",
+      "default": "work"
     }
   },
   "validations": [],

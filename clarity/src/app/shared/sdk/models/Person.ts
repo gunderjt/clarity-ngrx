@@ -3,7 +3,9 @@ import {
   Affiliation,
   PhoneNumber,
   EmailAddress,
-  Page
+  Page,
+  MailingAddress,
+  Tag
 } from '../index';
 
 declare var Object: any;
@@ -15,14 +17,16 @@ export interface PersonInterface {
   "active": boolean;
   "jobTitle"?: string;
   "slug": string;
-  "id"?: number;
+  "id"?: any;
   "created"?: Date;
   "modified"?: Date;
-  "affiliationId"?: number;
+  "affiliationId"?: any;
   affiliations?: Affiliation;
   phoneNumbers?: PhoneNumber[];
   emails?: EmailAddress[];
   pages?: Page[];
+  addresses?: MailingAddress[];
+  tags?: Tag[];
 }
 
 export class Person implements PersonInterface {
@@ -33,14 +37,16 @@ export class Person implements PersonInterface {
   "active": boolean;
   "jobTitle": string;
   "slug": string;
-  "id": number;
+  "id": any;
   "created": Date;
   "modified": Date;
-  "affiliationId": number;
+  "affiliationId": any;
   affiliations: Affiliation;
   phoneNumbers: PhoneNumber[];
   emails: EmailAddress[];
   pages: Page[];
+  addresses: MailingAddress[];
+  tags: Tag[];
   constructor(data?: PersonInterface) {
     Object.assign(this, data);
   }
@@ -103,7 +109,7 @@ export class Person implements PersonInterface {
         },
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
         "created": {
           name: 'created',
@@ -117,7 +123,7 @@ export class Person implements PersonInterface {
         },
         "affiliationId": {
           name: 'affiliationId',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {
@@ -140,6 +146,16 @@ export class Person implements PersonInterface {
           name: 'pages',
           type: 'Page[]',
           model: 'Page'
+        },
+        addresses: {
+          name: 'addresses',
+          type: 'MailingAddress[]',
+          model: 'MailingAddress'
+        },
+        tags: {
+          name: 'tags',
+          type: 'Tag[]',
+          model: 'Tag'
         },
       }
     }

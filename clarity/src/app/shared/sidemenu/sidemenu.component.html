@@ -2,6 +2,9 @@
 	<a href="#" [routerLink]="['/people']" class="nav-link active">
 		People
 	</a>
+	<a href="#" [routerLink]="[{ outlets: {modal: ['people','new'] } }]" class="nav-link active">
+		New Person
+	</a>
 	<!-- <a href="..." class="nav-link">
 		Nav Element 2
 	</a>

@@ -7,7 +7,23 @@
   },
   "mixins": {
     "Timestamp": {},
-    "Slugify": {"fields":["firstName", "middleName", "lastName"], "slug_field": "slug"}
+    "Slugify": {
+      "fields": [
+        "firstName",
+        "middleName",
+        "lastName"
+      ],
+      "slug_field": "slug"
+    }
+  },
+  "scope": {
+    "include": [
+      "emails",
+      "addresses",
+      "phoneNumbers",
+      "tags",
+      "pages"
+    ]
   },
   "properties": {
     "firstName": {
@@ -37,7 +53,9 @@
     "slug": {
       "type": "string",
       "required": true,
-      "index": {"unique": true}
+      "index": {
+        "unique": true
+      }
     }
   },
   "validations": [],
@@ -62,6 +80,16 @@
       "model": "Page",
       "foreignKey": "",
       "through": "PageAuthors"
+    },
+    "tags": {
+      "type": "hasMany",
+      "model": "Tag",
+      "foreignKey": ""
+    },
+    "addresses": {
+      "type": "hasMany",
+      "model": "MailingAddress",
+      "foreignKey": ""
     }
   },
   "acls": [],

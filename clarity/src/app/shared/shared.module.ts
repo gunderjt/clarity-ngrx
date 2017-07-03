@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NotifyService } from './UINotify/ui-notify.service';
-import { ToastyModule } from 'ng2-toasty';
+
 import { ClarityModule } from 'clarity-angular';
 import { SDKBrowserModule } from './sdk/index';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterService } from './filterService/filter.service';
 
 const routes: Routes = [
 ];
@@ -13,20 +15,22 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    ToastyModule.forRoot(),
     RouterModule.forChild(routes),
     SDKBrowserModule.forRoot(),
     ClarityModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
   	SidemenuComponent,
-  	ToastyModule,
     SDKBrowserModule,
     ClarityModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [SidemenuComponent],
   providers: [
-  	NotifyService
+    FilterService
   ]
 })
 export class SharedModule { }

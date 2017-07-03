@@ -7,6 +7,8 @@ import { PhoneNumber } from '../../models/PhoneNumber';
 import { EmailAddress } from '../../models/EmailAddress';
 import { Page } from '../../models/Page';
 import { PageAuthors } from '../../models/PageAuthors';
+import { MailingAddress } from '../../models/MailingAddress';
+import { Tag } from '../../models/Tag';
 
 export interface Models { [name: string]: any }
 
@@ -21,6 +23,8 @@ export class SDKModels {
     EmailAddress: EmailAddress,
     Page: Page,
     PageAuthors: PageAuthors,
+    MailingAddress: MailingAddress,
+    Tag: Tag,
     
   };
 

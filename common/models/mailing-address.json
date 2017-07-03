@@ -1,0 +1,59 @@
+{
+  "name": "MailingAddress",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "address": {
+      "type": "string",
+      "required": true,
+      "default": "none"
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "stateProvince": {
+      "type": "string",
+      "required": true
+    },
+    "zip": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string",
+      "required": true,
+      "default": "United States"
+    },
+    "public": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "workshop": {
+      "type": "boolean"
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "default": "main"
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "default": "work"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "person": {
+      "type": "belongsTo",
+      "model": "Person",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -17,6 +17,16 @@
     },
     "workshop": {
       "type": "boolean"
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "default": "main"
+    },
+    "type": {
+      "type": "string",
+      "required": "true",
+      "default": "work"
     }
   },
   "validations": [],

@@ -8,8 +8,10 @@ export interface EmailAddressInterface {
   "value": string;
   "public": boolean;
   "workshop"?: boolean;
-  "id"?: number;
-  "personId"?: number;
+  "label": string;
+  "type": string;
+  "id"?: any;
+  "personId"?: any;
   person?: Person;
 }
 
@@ -17,8 +19,10 @@ export class EmailAddress implements EmailAddressInterface {
   "value": string;
   "public": boolean;
   "workshop": boolean;
-  "id": number;
-  "personId": number;
+  "label": string;
+  "type": string;
+  "id": any;
+  "personId": any;
   person: Person;
   constructor(data?: EmailAddressInterface) {
     Object.assign(this, data);
@@ -49,7 +53,7 @@ export class EmailAddress implements EmailAddressInterface {
   public static getModelDefinition() {
     return {
       name: 'EmailAddress',
-      plural: 'y',
+      plural: 'EmailAddresses',
       properties: {
         "value": {
           name: 'value',
@@ -64,13 +68,23 @@ export class EmailAddress implements EmailAddressInterface {
           name: 'workshop',
           type: 'boolean'
         },
+        "label": {
+          name: 'label',
+          type: 'string',
+          default: 'main'
+        },
+        "type": {
+          name: 'type',
+          type: 'string',
+          default: 'work'
+        },
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
         "personId": {
           name: 'personId',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {

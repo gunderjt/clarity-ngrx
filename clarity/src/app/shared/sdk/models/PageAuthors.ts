@@ -7,18 +7,18 @@ import {
 declare var Object: any;
 export interface PageAuthorsInterface {
   "weight": number;
-  "id"?: number;
-  "pageId"?: number;
-  "authorId"?: number;
+  "id"?: any;
+  "pageId"?: any;
+  "authorId"?: any;
   page?: Page;
   author?: Person;
 }
 
 export class PageAuthors implements PageAuthorsInterface {
   "weight": number;
-  "id": number;
-  "pageId": number;
-  "authorId": number;
+  "id": any;
+  "pageId": any;
+  "authorId": any;
   page: Page;
   author: Person;
   constructor(data?: PageAuthorsInterface) {
@@ -59,15 +59,15 @@ export class PageAuthors implements PageAuthorsInterface {
         },
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
         "pageId": {
           name: 'pageId',
-          type: 'number'
+          type: 'any'
         },
         "authorId": {
           name: 'authorId',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {

@@ -18,6 +18,8 @@
     "loopback": "^3.0.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^4.0.0",
+    "loopback-component-visualizer": "^1.2.0",
+    "loopback-connector-mongodb": "^1.18.1",
     "loopback-connector-mysql": "^2.4.1",
     "loopback-slug": "^0.1.9",
     "serve-favicon": "^2.0.1",
@@ -29,6 +31,7 @@
     "eslint": "^3.17.1",
     "eslint-config-loopback": "^8.0.0",
     "faker": "^4.1.0",
+    "loopback-seed": "^1.0.1",
     "nsp": "^2.1.0"
   },
   "repository": {

@@ -14,49 +14,57 @@
     ]
   },
   "User": {
-    "dataSource": "mysqlDs"
+    "dataSource": "mongoDs"
   },
   "AccessToken": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
     "public": false
   },
   "ACL": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
     "public": false
   },
   "Person": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
     "public": true
   },
   "Affiliation": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
     "public": true
   },
   "PhoneNumber": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
     "public": true
   },
   "EmailAddress": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
     "public": true
   },
   "Page": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
     "public": true
   },
   "PageAuthors": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "MailingAddress": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Tag": {
+    "dataSource": "mongoDs",
     "public": true
   }
 }

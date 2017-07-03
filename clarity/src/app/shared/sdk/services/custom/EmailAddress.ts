@@ -51,7 +51,7 @@ export class EmailAddressApi extends BaseLoopBackApi {
   public getPerson(id: any, refresh: any = {}): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/y/:id/person";
+    "/EmailAddresses/:id/person";
     let _routeParams: any = {
       id: id
     };
@@ -81,7 +81,7 @@ export class EmailAddressApi extends BaseLoopBackApi {
   public patchOrCreate(data: any = {}): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/y";
+    "/EmailAddresses";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -112,7 +112,7 @@ export class EmailAddressApi extends BaseLoopBackApi {
   public patchAttributes(id: any, data: any = {}): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/y/:id";
+    "/EmailAddresses/:id";
     let _routeParams: any = {
       id: id
     };

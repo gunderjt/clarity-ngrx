@@ -55,6 +55,8 @@ import { PhoneNumberApi } from './services/custom/PhoneNumber';
 import { EmailAddressApi } from './services/custom/EmailAddress';
 import { PageApi } from './services/custom/Page';
 import { PageAuthorsApi } from './services/custom/PageAuthors';
+import { MailingAddressApi } from './services/custom/MailingAddress';
+import { TagApi } from './services/custom/Tag';
 /**
 * @module SDKBrowserModule
 * @description
@@ -93,6 +95,8 @@ export class SDKBrowserModule {
         EmailAddressApi,
         PageApi,
         PageAuthorsApi,
+        MailingAddressApi,
+        TagApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }

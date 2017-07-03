@@ -8,7 +8,7 @@ export interface PageInterface {
   "content": string;
   "public": boolean;
   "publishDate": Date;
-  "id"?: number;
+  "id"?: any;
   authors?: Person[];
 }
 
@@ -16,7 +16,7 @@ export class Page implements PageInterface {
   "content": string;
   "public": boolean;
   "publishDate": Date;
-  "id": number;
+  "id": any;
   authors: Person[];
   constructor(data?: PageInterface) {
     Object.assign(this, data);
@@ -64,7 +64,7 @@ export class Page implements PageInterface {
         },
         "id": {
           name: 'id',
-          type: 'number'
+          type: 'any'
         },
       },
       relations: {

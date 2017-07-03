@@ -1,4 +1,26 @@
 <h3>{{person.firstName}} {{person.middleName}} {{person.lastName}}</h3>
 
-<button type="button" class="btn btn-primary-outline" (click)="goBack()">Go Back</button>
-<button class="btn btn-info-outline" (click)="goEdit.emit()">Edit</button>
+<ng-content select="person-emails"></ng-content>
+
+<clr-button-group class="btn-primary">
+		<clr-button (click)="back.emit()">Back</clr-button>
+		<clr-button (click)="edit.emit(person)">Edit</clr-button>
+		<clr-button [clrInMenu]="true" (click)="model_open = true">Delete</clr-button>
+</clr-button-group>
+
+<clr-modal [(clrModalOpen)]="model_open">
+		<h3 class="modal-title">Confirm Deletion</h3>
+		<div class="modal-body">
+			<p>Please confirm that you intend to delete this user.  This process cannot be undone.  This will remove all associated elements (labels, emails, etc) for this person. If you are certain please type <strong>{{person.slug}}</strong> into the space below and click "Delete"</p>
+		
+			<section class="form-block">
+				<div class="form-group">
+					<input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="name" #ctrl="ngModel" required>
+				</div>
+			</section>
+		</div>
+		<div class="modal-footer">
+				<button type="button" class="btn btn-outline" (click)="model_open = false">Cancel</button>
+				<button type="button" class="btn btn-danger" [disabled]="person.slug !== name" (click)="confirmDelete()">Delete</button>
+		</div>
+</clr-modal>
