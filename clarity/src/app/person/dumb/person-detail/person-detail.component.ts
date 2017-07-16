@@ -8,6 +8,8 @@ import { Person } from "../../../shared/sdk/models";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PersonDetailComponent implements OnInit {
+  size: number = 36;
+
 	@Input() person: Person;
 	@Output() edit = new EventEmitter();
   @Output() back = new EventEmitter();

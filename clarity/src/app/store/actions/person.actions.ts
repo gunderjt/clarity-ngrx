@@ -99,10 +99,10 @@ export class PersonActions {
 			payload: err
 		}
 	}
-	removePerson(id: string): Action {
+	removePerson(person: Person): Action {
 		return {
 			type: PersonActions.REMOVE_PERSON,
-			payload: id
+			payload: person
 		}
 	}
 	removePersonSuccess(person: Person): Action {

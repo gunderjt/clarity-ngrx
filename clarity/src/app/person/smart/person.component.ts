@@ -13,22 +13,25 @@ import { PersonStoreService } from '../../store/services/person-store.service';
 @Component({
 	selector: 'app-person',
 	template: `
-		<div class="row">
-			<div class="col-xs">
-				<person-detail 
-					[person]="person$ | async"
-					(edit)="openEdit($event)"
-					(back)="goBack()"
-					(delete)="removePerson($event)"
-				>
-				</person-detail>
-			</div>
-		</div>
+		<person-detail 
+			[person]="person$ | async"
+			(edit)="openEdit($event)"
+			(back)="goBack()"
+			(delete)="removePerson($event)"
+		>
+		</person-detail>
+		<person-emails
+			[person$] = "person$"
+		>
+		</person-emails>
 	`,
 })
 export class PersonComponent implements OnInit, OnDestroy {
 	private ngUnsubscribe: Subject<void> = new Subject<void>();
 	person$: Observable<Person>;
+
+	//I'm not sure how to do it better :/
+	redirect: boolean = false;
 
 	constructor(
 		private personStore: PersonStoreService,
@@ -39,16 +42,22 @@ export class PersonComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.person$ = this.personStore.person$;
+		this.person$
+		.takeUntil(this.ngUnsubscribe)
+		.subscribe((person) => {
+			if(this.redirect && !person.id) {
+				this.router.navigate(['/people']);		
+			}
+		});
 	}
 
-
 	removePerson(person) {
+		this.redirect = true;
 		this.personStore.removePerson(person as Person);
 	}
 
 	openEdit(person) {
 		this.router.navigate([{outlets: {modal: ['people', person.id, 'edit']}}]);
-		//this.router.navigate(['/people', person.id, 'edit']);
 	}
 
 	goBack() {
@@ -59,5 +68,4 @@ export class PersonComponent implements OnInit, OnDestroy {
 		this.ngUnsubscribe.next();
 		this.ngUnsubscribe.complete();
 	}
-
 }

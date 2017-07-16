@@ -9,7 +9,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { PersonEffects } from '../store/effects/person.effects';
 import { EmailEffects } from '../store/effects/email.effects';
 /*Store Api Services*/
-import { PersonStoreService } from './services/person-store.service'
+import { PersonStoreService } from './services/person-store.service';
+import { EmailStoreService } from './services/email-store.service';
 
 const appEffectsRun = [
   EffectsModule.run(PersonEffects),
@@ -25,7 +26,8 @@ const appEffectsRun = [
 	providers: [
 		PersonActions,
 		EmailActions,
-		PersonStoreService
+		PersonStoreService,
+		EmailStoreService,
 	]
 })
 export class AppStoreModule { }

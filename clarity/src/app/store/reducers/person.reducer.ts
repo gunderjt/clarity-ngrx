@@ -22,10 +22,19 @@ export const personReducer: ActionReducer<PersonState> =
 				peopleIds: peopleIds,
 				peopleEntities: peopleEntities
 			}) as PersonState;
+		case PersonActions.GET_PERSON:
+		case PersonActions.UPDATE_PERSON:
+		case PersonActions.CREATE_PERSON:
+			return state.merge({
+				loading: true,
+				loaded: false,
+			}) as PersonState;
 		case PersonActions.GET_PERSON_SUCCESS:
 		case PersonActions.UPDATE_PERSON_SUCCESS:
 		case PersonActions.CREATE_PERSON_SUCCESS:
 			return state.merge({
+				loaded: true,
+				loading: false,
 				selectedPerson: payload,
 				selectedPersonId: payload.id
 			}) as PersonState;			
@@ -35,28 +44,6 @@ export const personReducer: ActionReducer<PersonState> =
 				peopleEntities: state.peopleEntities.filter((obj) => obj.id != payload.id),
 				selectedPerson: Map({}),
 				selectedPersonId: null,
-			}) as PersonState;
-		case EmailActions.EMAILS_GET_SUCCESS:
-			const _emails: EmailAddress[] = payload;
-			const emailsEntities = _emails.reduce((emails: {[id: string]: EmailAddress}, email: EmailAddress) => {
-				return Object.assign(emails, {
-					[email.id] : email
-				})
-			}, {});
-			return state.merge({
-				selectedPersonEmails: emailsEntities
-			}) as PersonState;
-		case EmailActions.EMAIL_ADD_SUCCESS:
-			return state.merge({
-				selectedPersonEmails: {...state.selectedPersonEmails, [payload.id]: payload}
-			}) as PersonState;
-		case EmailActions.EMAIL_REMOVE_SUCCESS:
-			return state.merge({
-				selectedPersonEmails: state.selectedPersonEmails.filter((obj) => obj.id != payload.id)
-			}) as PersonState;
-		case EmailActions.EMAIL_UPDATE_SUCCESS:
-			return state.merge({
-				selectedPersonEmails: Object.assign({}, state.selectedPersonEmails, {[payload.id]: payload})
 			}) as PersonState;
 		default:
 			return state;

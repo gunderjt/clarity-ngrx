@@ -1,5 +1,6 @@
 import { environment } from '../../environments/environment';
 import { personReducer } from './reducers/person.reducer';
+import { emailReducer } from './reducers/email.reducer';
 import { routerReducer } from '@ngrx/router-store';
 
 /**
@@ -33,6 +34,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 const reducers = {
   people: personReducer,
+  emails: emailReducer,
   router: routerReducer,
 };
 

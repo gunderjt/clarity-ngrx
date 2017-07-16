@@ -1,12 +1,18 @@
-<h3>{{person.firstName}} {{person.middleName}} {{person.lastName}}</h3>
-
-<ng-content select="person-emails"></ng-content>
-
-<clr-button-group class="btn-primary">
-		<clr-button (click)="back.emit()">Back</clr-button>
-		<clr-button (click)="edit.emit(person)">Edit</clr-button>
-		<clr-button [clrInMenu]="true" (click)="model_open = true">Delete</clr-button>
-</clr-button-group>
+<div class="row flex-items-xs-left">
+	<div class="col-4">
+		<h1>{{person.firstName}} {{person.middleName}} {{person.lastName}}</h1>
+	</div>
+	<div class="col-4">
+		<div class="btn-group">
+			<button class="btn" (click)="edit.emit(person)">
+				<clr-icon shape="edit" size="25"></clr-icon>
+			</button>
+			<button class="btn" (click)="model_open = true">
+				<clr-icon shape="remove" size="25" class="is-error"></clr-icon>
+			</button>
+		</div>
+	</div>
+</div>
 
 <clr-modal [(clrModalOpen)]="model_open">
 		<h3 class="modal-title">Confirm Deletion</h3>

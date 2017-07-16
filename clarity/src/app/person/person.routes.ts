@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
 import { PeopleComponent } from './smart/people.component';
 import { PersonComponent } from './smart/person.component';
-import { PersonEditComponent } from './smart/person-edit.component';
-import { PersonNewComponent } from './smart/person-new.component';
+import { PersonFormComponent } from './smart/person-form.component';
 import { PersonResolver } from './smart/person.resolver';
 
 export const PersonRoutes: Routes = [
@@ -16,7 +15,7 @@ export const PersonRoutes: Routes = [
 		children: [
 			{
 				path: "new", 
-				component: PersonNewComponent,
+				component: PersonFormComponent,
 				data: {
 					title: 'New'
 				},
@@ -37,7 +36,7 @@ export const PersonRoutes: Routes = [
 			},
 			{
 				path: 'edit',
-				component: PersonEditComponent,
+				component: PersonFormComponent,
 				data: {
 					title: 'Edit',
 				},

@@ -75,7 +75,7 @@ export class PersonEffects {
 		DeletePerson$: Observable<Action> = this.actions$
 			.ofType(PersonActions.REMOVE_PERSON)
 			.switchMap((action:Action) => {
-				let removedPerson: Person = action.payload;
+				let removedPerson: Person = Object.assign({}, action.payload);
 				return this.personService.deleteById(action.payload.id)
 					.map((data: any) => {
 						this.notify.send({
@@ -87,7 +87,7 @@ export class PersonEffects {
 					})
 					.catch((err) => {
 						this.notify.send({type:'error', msg: err})
-						return Observable.of(this.personActions.updatePersonFailed(err))
+						return Observable.of(this.personActions.removePersonFailed(err))
 					})
 			});
 
@@ -107,7 +107,7 @@ export class PersonEffects {
 					})
 					.catch((err) => {
 						this.notify.send({type:'error', msg: err})
-						return Observable.of(this.personActions.updatePersonFailed(err))
+						return Observable.of(this.personActions.createPersonFailed(err))
 					})
 			});
 			

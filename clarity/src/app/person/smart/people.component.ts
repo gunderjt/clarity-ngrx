@@ -31,10 +31,11 @@ export class PeopleComponent implements OnInit {
 		private route: ActivatedRoute,
 		private personStore: PersonStoreService
 		) 
-	{
-		this.people$ = this.personStore.people$;
-	}
+	{ }
+
 	ngOnInit() {
+		this.personStore.getPeople();
+		this.people$ = this.personStore.people$;
 	}
 
 	searchFilter(filter: LoopBackFilter) {

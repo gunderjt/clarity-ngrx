@@ -11,11 +11,10 @@ import { HomeComponent } from './home/home.component';
 
 import { PeopleComponent } from './person/smart/people.component';
 import { PersonComponent } from './person/smart/person.component';
-import { PersonEditComponent } from './person/smart/person-edit.component';
-import { PersonNewComponent } from './person/smart/person-new.component';
+import { PersonFormComponent } from './person/smart/person-form.component';
+import { PersonEmailFormComponent } from './person/smart/person-email-form.component';
+
 import { PersonResolver } from './person/smart/person.resolver';
-
-
 
 export const ROUTES: Routes = [
 	{path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -43,21 +42,13 @@ export const ROUTES: Routes = [
 							title: 'Details'
 						}
 					},
-					// {
-					// 	path: 'edit',
-					// 	component: PersonEditComponent,
-					// 	data: {
-					// 		title: 'Edit',
-					// 	},
-					// 	outlet: 'modal'
-					// }
 				]
 			},
 		],
 	},
 	{
 		path: "people/new", 
-		component: PersonNewComponent,
+		component: PersonFormComponent,
 		data: {
 			title: 'New'
 		},
@@ -65,10 +56,21 @@ export const ROUTES: Routes = [
 	},
 	{
 		path: "people/:id/edit",
-		component: PersonEditComponent,
+		component: PersonFormComponent,
 		outlet: 'modal',
 		resolve: { person: PersonResolver }
+	},
+	{
+		path: "people/:parentId/email/new",
+		component: PersonEmailFormComponent,
+		outlet: 'modal',
+	},
+	{
+		path: "email/:id/edit",
+		component: PersonEmailFormComponent,
+		outlet: 'modal',
 	}
+
 	//{path: 'people', loadChildren: './person/person.module#PersonModule'}
 ];
 

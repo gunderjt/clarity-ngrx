@@ -20,12 +20,22 @@ const fetchSelectedPerson = function (state: PersonState): Person {
   return state.selectedPerson;
 };
 
-const fetchSelectedPersonEmails = function (state: PersonState): EmailAddress[] {
-	const emails = state.selectedPersonEmails.toJS();
-	return Object.keys(emails).map((obj) => emails[obj]);
-};
+const fetchSelectedPersonId = function (state: PersonState): string {
+	return state.selectedPersonId;
+}
+
+const fetchLoaded = function (state: PersonState): boolean {
+	return state.loaded;
+}
+
+const fetchLoading = function (state: PersonState): boolean {
+	return state.loading;
+}
 
 // *************************** PUBLIC API's ****************************
 export const getSelectedPerson = createSelector(getPersonState, fetchSelectedPerson);
-export const getSelectedPersonEmails = createSelector(getPersonState, fetchSelectedPersonEmails);
+export const getSelectedPersonId = createSelector(getPersonState, fetchSelectedPersonId);
 export const getPeople = createSelector(getPersonState, fetchPeople);
+export const getLoaded = createSelector(getPersonState, fetchLoaded);
+export const getLoading = createSelector(getPersonState, fetchLoading);
+

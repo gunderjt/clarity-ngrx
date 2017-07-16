@@ -1,0 +1,10 @@
+<ul>
+	<li *ngFor="let email of emails">
+		<span>{{email.value}}</span>
+		<clr-icon shape="edit" (click)="update.emit(email)"></clr-icon>
+		<clr-icon shape="remove" (click)="remove.emit(email)"></clr-icon>
+	</li>
+</ul>
+<button class="btn btn-outline" (click)="add.emit()">
+	<clr-icon shape="add"></clr-icon>
+</button>
