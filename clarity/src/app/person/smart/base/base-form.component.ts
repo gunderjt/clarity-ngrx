@@ -68,7 +68,11 @@ export abstract class BaseFormComponent implements OnInit, OnDestroy {
 
 	injectTheModel(model) {
 		if(Array.isArray(model)) {
-			this.injectedModel = model[this.id];
+			model.forEach((obj) => {
+				if(obj.id === this.id) {
+					this.injectedModel = obj;
+				}
+			})
 		} else {
 			this.injectedModel = model;
 		}
