@@ -1,6 +1,13 @@
 /* tslint:disable */
 
-declare var Object: any;
+    
+import { Action } from '@ngrx/store';
+
+      export interface LoopbackAction extends Action {
+        meta?: any;
+      }
+      
+        declare var Object: any;
 export interface LoopBackFilter {
   fields?: any;
   include?: any;

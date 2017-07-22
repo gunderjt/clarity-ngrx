@@ -54,7 +54,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public getAffiliations(id: any, refresh: any = {}): Observable<any> {
+  public getAffiliations(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/affiliations";
@@ -63,8 +63,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (refresh) _urlParams.refresh = refresh;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof refresh !== 'undefined' && refresh !== null) _urlParams.refresh = refresh;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -86,7 +86,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createAffiliations(id: any, data: any = {}): Observable<any> {
+  public createAffiliations(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/affiliations";
@@ -97,7 +97,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -119,7 +119,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public updateAffiliations(id: any, data: any = {}): Observable<any> {
+  public updateAffiliations(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/affiliations";
@@ -130,7 +130,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -145,7 +145,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyAffiliations(id: any): Observable<any> {
+  public destroyAffiliations(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/affiliations";
@@ -154,7 +154,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -174,7 +174,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public findByIdPhoneNumbers(id: any, fk: any): Observable<any> {
+  public findByIdPhoneNumbers(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/phoneNumbers/:fk";
@@ -184,7 +184,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -201,7 +201,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdPhoneNumbers(id: any, fk: any): Observable<any> {
+  public destroyByIdPhoneNumbers(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/phoneNumbers/:fk";
@@ -211,7 +211,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -235,7 +235,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public updateByIdPhoneNumbers(id: any, fk: any, data: any = {}): Observable<any> {
+  public updateByIdPhoneNumbers(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/phoneNumbers/:fk";
@@ -247,7 +247,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -267,7 +267,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public findByIdEmails(id: any, fk: any): Observable<any> {
+  public findByIdEmails(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/emails/:fk";
@@ -277,7 +277,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -294,7 +294,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdEmails(id: any, fk: any): Observable<any> {
+  public destroyByIdEmails(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/emails/:fk";
@@ -304,7 +304,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -328,7 +328,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public updateByIdEmails(id: any, fk: any, data: any = {}): Observable<any> {
+  public updateByIdEmails(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/emails/:fk";
@@ -340,7 +340,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -360,7 +360,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public findByIdPages(id: any, fk: any): Observable<any> {
+  public findByIdPages(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages/:fk";
@@ -370,7 +370,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -387,7 +387,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdPages(id: any, fk: any): Observable<any> {
+  public destroyByIdPages(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages/:fk";
@@ -397,7 +397,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -421,7 +421,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public updateByIdPages(id: any, fk: any, data: any = {}): Observable<any> {
+  public updateByIdPages(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages/:fk";
@@ -433,7 +433,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -457,7 +457,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public linkPages(id: any, fk: any, data: any = {}): Observable<any> {
+  public linkPages(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages/rel/:fk";
@@ -469,7 +469,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -486,7 +486,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public unlinkPages(id: any, fk: any): Observable<any> {
+  public unlinkPages(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages/rel/:fk";
@@ -496,7 +496,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -516,7 +516,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public existsPages(id: any, fk: any): Observable<any> {
+  public existsPages(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "HEAD";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages/rel/:fk";
@@ -526,7 +526,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -546,7 +546,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public findByIdAddresses(id: any, fk: any): Observable<any> {
+  public findByIdAddresses(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/addresses/:fk";
@@ -556,7 +556,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -573,7 +573,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdAddresses(id: any, fk: any): Observable<any> {
+  public destroyByIdAddresses(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/addresses/:fk";
@@ -583,7 +583,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -607,7 +607,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public updateByIdAddresses(id: any, fk: any, data: any = {}): Observable<any> {
+  public updateByIdAddresses(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/addresses/:fk";
@@ -619,7 +619,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -639,7 +639,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public findByIdTags(id: any, fk: any): Observable<any> {
+  public findByIdTags(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/tags/:fk";
@@ -649,7 +649,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -666,7 +666,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdTags(id: any, fk: any): Observable<any> {
+  public destroyByIdTags(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/tags/:fk";
@@ -676,7 +676,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -700,7 +700,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public updateByIdTags(id: any, fk: any, data: any = {}): Observable<any> {
+  public updateByIdTags(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/tags/:fk";
@@ -712,7 +712,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -732,7 +732,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public getPhoneNumbers(id: any, filter: LoopBackFilter = {}): Observable<any> {
+  public getPhoneNumbers(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/phoneNumbers";
@@ -741,8 +741,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (filter) _urlParams.filter = filter;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -764,7 +764,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createPhoneNumbers(id: any, data: any = {}): Observable<any> {
+  public createPhoneNumbers(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/phoneNumbers";
@@ -775,7 +775,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -790,7 +790,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deletePhoneNumbers(id: any): Observable<any> {
+  public deletePhoneNumbers(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/phoneNumbers";
@@ -799,7 +799,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -818,7 +818,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countPhoneNumbers(id: any, where: any = {}): Observable<any> {
+  public countPhoneNumbers(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/phoneNumbers/count";
@@ -827,8 +827,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (where) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -848,7 +848,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public getEmails(id: any, filter: LoopBackFilter = {}): Observable<any> {
+  public getEmails(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/emails";
@@ -857,8 +857,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (filter) _urlParams.filter = filter;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -880,7 +880,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createEmails(id: any, data: any = {}): Observable<any> {
+  public createEmails(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/emails";
@@ -891,7 +891,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -906,7 +906,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deleteEmails(id: any): Observable<any> {
+  public deleteEmails(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/emails";
@@ -915,7 +915,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -934,7 +934,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countEmails(id: any, where: any = {}): Observable<any> {
+  public countEmails(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/emails/count";
@@ -943,8 +943,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (where) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -964,7 +964,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public getPages(id: any, filter: LoopBackFilter = {}): Observable<any> {
+  public getPages(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages";
@@ -973,8 +973,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (filter) _urlParams.filter = filter;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -996,7 +996,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createPages(id: any, data: any = {}): Observable<any> {
+  public createPages(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages";
@@ -1007,7 +1007,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1022,7 +1022,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deletePages(id: any): Observable<any> {
+  public deletePages(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages";
@@ -1031,7 +1031,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1050,7 +1050,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countPages(id: any, where: any = {}): Observable<any> {
+  public countPages(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages/count";
@@ -1059,8 +1059,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (where) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1080,7 +1080,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public getAddresses(id: any, filter: LoopBackFilter = {}): Observable<any> {
+  public getAddresses(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/addresses";
@@ -1089,8 +1089,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (filter) _urlParams.filter = filter;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1112,7 +1112,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createAddresses(id: any, data: any = {}): Observable<any> {
+  public createAddresses(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/addresses";
@@ -1123,7 +1123,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1138,7 +1138,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deleteAddresses(id: any): Observable<any> {
+  public deleteAddresses(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/addresses";
@@ -1147,7 +1147,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1166,7 +1166,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countAddresses(id: any, where: any = {}): Observable<any> {
+  public countAddresses(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/addresses/count";
@@ -1175,8 +1175,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (where) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1196,7 +1196,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public getTags(id: any, filter: LoopBackFilter = {}): Observable<any> {
+  public getTags(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/tags";
@@ -1205,8 +1205,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (filter) _urlParams.filter = filter;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1228,7 +1228,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createTags(id: any, data: any = {}): Observable<any> {
+  public createTags(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/tags";
@@ -1239,7 +1239,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1254,7 +1254,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deleteTags(id: any): Observable<any> {
+  public deleteTags(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/tags";
@@ -1263,7 +1263,7 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1282,7 +1282,7 @@ export class PersonApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countTags(id: any, where: any = {}): Observable<any> {
+  public countTags(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/tags/count";
@@ -1291,8 +1291,8 @@ export class PersonApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (where) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1312,7 +1312,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public patchOrCreate(data: any = {}): Observable<any> {
+  public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People";
@@ -1321,7 +1321,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1343,7 +1343,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public patchAttributes(id: any, data: any = {}): Observable<any> {
+  public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id";
@@ -1354,7 +1354,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1376,7 +1376,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createManyAffiliations(id: any, data: any[] = []): Observable<any> {
+  public createManyAffiliations(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/affiliations";
@@ -1387,7 +1387,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1409,7 +1409,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createManyPhoneNumbers(id: any, data: any[] = []): Observable<any> {
+  public createManyPhoneNumbers(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/phoneNumbers";
@@ -1420,7 +1420,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1442,7 +1442,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createManyEmails(id: any, data: any[] = []): Observable<any> {
+  public createManyEmails(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/emails";
@@ -1453,7 +1453,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1475,7 +1475,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createManyPages(id: any, data: any[] = []): Observable<any> {
+  public createManyPages(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/pages";
@@ -1486,7 +1486,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1508,7 +1508,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createManyAddresses(id: any, data: any[] = []): Observable<any> {
+  public createManyAddresses(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/addresses";
@@ -1519,7 +1519,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -1541,7 +1541,7 @@ export class PersonApi extends BaseLoopBackApi {
    * This usually means the response is a `Person` object.)
    * </em>
    */
-  public createManyTags(id: any, data: any[] = []): Observable<any> {
+  public createManyTags(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/People/:id/tags";
@@ -1552,7 +1552,7 @@ export class PersonApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 

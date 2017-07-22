@@ -49,7 +49,7 @@ export class PageApi extends BaseLoopBackApi {
    * This usually means the response is a `Page` object.)
    * </em>
    */
-  public findByIdAuthors(id: any, fk: any): Observable<any> {
+  public findByIdAuthors(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors/:fk";
@@ -59,7 +59,7 @@ export class PageApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -76,7 +76,7 @@ export class PageApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdAuthors(id: any, fk: any): Observable<any> {
+  public destroyByIdAuthors(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors/:fk";
@@ -86,7 +86,7 @@ export class PageApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -110,7 +110,7 @@ export class PageApi extends BaseLoopBackApi {
    * This usually means the response is a `Page` object.)
    * </em>
    */
-  public updateByIdAuthors(id: any, fk: any, data: any = {}): Observable<any> {
+  public updateByIdAuthors(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors/:fk";
@@ -122,7 +122,7 @@ export class PageApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -146,7 +146,7 @@ export class PageApi extends BaseLoopBackApi {
    * This usually means the response is a `Page` object.)
    * </em>
    */
-  public linkAuthors(id: any, fk: any, data: any = {}): Observable<any> {
+  public linkAuthors(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors/rel/:fk";
@@ -158,7 +158,7 @@ export class PageApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -175,7 +175,7 @@ export class PageApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public unlinkAuthors(id: any, fk: any): Observable<any> {
+  public unlinkAuthors(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors/rel/:fk";
@@ -185,7 +185,7 @@ export class PageApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -205,7 +205,7 @@ export class PageApi extends BaseLoopBackApi {
    * This usually means the response is a `Page` object.)
    * </em>
    */
-  public existsAuthors(id: any, fk: any): Observable<any> {
+  public existsAuthors(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "HEAD";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors/rel/:fk";
@@ -215,7 +215,7 @@ export class PageApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -235,7 +235,7 @@ export class PageApi extends BaseLoopBackApi {
    * This usually means the response is a `Page` object.)
    * </em>
    */
-  public getAuthors(id: any, filter: LoopBackFilter = {}): Observable<any> {
+  public getAuthors(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors";
@@ -244,8 +244,8 @@ export class PageApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (filter) _urlParams.filter = filter;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -267,7 +267,7 @@ export class PageApi extends BaseLoopBackApi {
    * This usually means the response is a `Page` object.)
    * </em>
    */
-  public createAuthors(id: any, data: any = {}): Observable<any> {
+  public createAuthors(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors";
@@ -278,7 +278,7 @@ export class PageApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -293,7 +293,7 @@ export class PageApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deleteAuthors(id: any): Observable<any> {
+  public deleteAuthors(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors";
@@ -302,7 +302,7 @@ export class PageApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -321,7 +321,7 @@ export class PageApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countAuthors(id: any, where: any = {}): Observable<any> {
+  public countAuthors(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors/count";
@@ -330,8 +330,8 @@ export class PageApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (where) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -351,7 +351,7 @@ export class PageApi extends BaseLoopBackApi {
    * This usually means the response is a `Page` object.)
    * </em>
    */
-  public patchOrCreate(data: any = {}): Observable<any> {
+  public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages";
@@ -360,7 +360,7 @@ export class PageApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -382,7 +382,7 @@ export class PageApi extends BaseLoopBackApi {
    * This usually means the response is a `Page` object.)
    * </em>
    */
-  public patchAttributes(id: any, data: any = {}): Observable<any> {
+  public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id";
@@ -393,7 +393,7 @@ export class PageApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -415,7 +415,7 @@ export class PageApi extends BaseLoopBackApi {
    * This usually means the response is a `Page` object.)
    * </em>
    */
-  public createManyAuthors(id: any, data: any[] = []): Observable<any> {
+  public createManyAuthors(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Pages/:id/authors";
@@ -426,7 +426,7 @@ export class PageApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 

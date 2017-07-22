@@ -48,7 +48,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    * This usually means the response is a `Affiliation` object.)
    * </em>
    */
-  public findByIdPeople(id: any, fk: any): Observable<any> {
+  public findByIdPeople(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations/:id/people/:fk";
@@ -58,7 +58,7 @@ export class AffiliationApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -75,7 +75,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public destroyByIdPeople(id: any, fk: any): Observable<any> {
+  public destroyByIdPeople(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations/:id/people/:fk";
@@ -85,7 +85,7 @@ export class AffiliationApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -109,7 +109,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    * This usually means the response is a `Affiliation` object.)
    * </em>
    */
-  public updateByIdPeople(id: any, fk: any, data: any = {}): Observable<any> {
+  public updateByIdPeople(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations/:id/people/:fk";
@@ -121,7 +121,7 @@ export class AffiliationApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -141,7 +141,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    * This usually means the response is a `Affiliation` object.)
    * </em>
    */
-  public getPeople(id: any, filter: LoopBackFilter = {}): Observable<any> {
+  public getPeople(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations/:id/people";
@@ -150,8 +150,8 @@ export class AffiliationApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (filter) _urlParams.filter = filter;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -173,7 +173,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    * This usually means the response is a `Affiliation` object.)
    * </em>
    */
-  public createPeople(id: any, data: any = {}): Observable<any> {
+  public createPeople(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations/:id/people";
@@ -184,7 +184,7 @@ export class AffiliationApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -199,7 +199,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public deletePeople(id: any): Observable<any> {
+  public deletePeople(id: any, customHeaders?: Function): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations/:id/people";
@@ -208,7 +208,7 @@ export class AffiliationApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -227,7 +227,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    *
    *  - `count` – `{number}` - 
    */
-  public countPeople(id: any, where: any = {}): Observable<any> {
+  public countPeople(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations/:id/people/count";
@@ -236,8 +236,8 @@ export class AffiliationApi extends BaseLoopBackApi {
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (where) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -257,7 +257,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    * This usually means the response is a `Affiliation` object.)
    * </em>
    */
-  public patchOrCreate(data: any = {}): Observable<any> {
+  public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations";
@@ -266,7 +266,7 @@ export class AffiliationApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -288,7 +288,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    * This usually means the response is a `Affiliation` object.)
    * </em>
    */
-  public patchAttributes(id: any, data: any = {}): Observable<any> {
+  public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations/:id";
@@ -299,7 +299,7 @@ export class AffiliationApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -321,7 +321,7 @@ export class AffiliationApi extends BaseLoopBackApi {
    * This usually means the response is a `Affiliation` object.)
    * </em>
    */
-  public createManyPeople(id: any, data: any[] = []): Observable<any> {
+  public createManyPeople(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Affiliations/:id/people";
@@ -332,7 +332,7 @@ export class AffiliationApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
